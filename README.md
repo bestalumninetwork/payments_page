@@ -2,14 +2,14 @@
 
 # Intro
 This is a simple setup to handling Stripe for BAN.  
-It work by using a Nginx container for hosting the website and handle the Let's Encrypt certificate. There is also an import container which import the data from Stripe and exports it to a json-file, which is used to build the website.
+It works by using a Nginx container for hosting the website and handle the Let's Encrypt certificate. There is also an import container which import the data from Stripe and exports it to a json-file, which is used to build the website.
 
 ## Requirement
 - docker
 - docker-compose
 
 ## Install
-This is meant to be run from a system user. So if you don't have one create it.
+This is meant to be run from a system user. So, if you don't have one create it.
 ```bash
 # The name of the system user
 NEW_USER=services
@@ -31,7 +31,7 @@ sudo chmod 700 "/home/${NEW_USER}"
 # Make it so that the system this someone is load in to the user
 loginctl enable-linger "${NEW_USER}"
 
-# Set a magic variable that you need in order to use systemD, just don't think about it
+# Set a magic variable that you need to use systemD, just don't think about it
 cat <<"zEOFz" | sudo -u "${NEW_USER}" tee -a ~/.bashrc
 
 ### Systemd variable
@@ -41,7 +41,7 @@ zEOFz
 
 To setup the git repo change user to the system user you just created, `sudo -u "${NEW_USER}" -i` and run the follow commands
 ```bash
-# Go to home holder
+# Go to the home holder
 cd ~/
 
 # Clone the git repo into the 'stripe' folder
@@ -91,7 +91,7 @@ Make sure you are the service/system user (`sudo -u services -i`)
 # Create service file
 cat <<'zEOFz' | tee ~/.config/systemd/user/git_repo_updater.service
 [Unit]
-Description=Search and find git repoes to update/pull newest version
+Description=Search and find git repoes to update/pull the newest version
 
 [Service]
 #WorkingDirectory=%h/stripe
