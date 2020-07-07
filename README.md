@@ -65,7 +65,6 @@ For how to configure the rest of Nginx and Let's Encrypt go [here](https://githu
 
 ## Start/Restart/Stop
 Make sure you are the service/system user (`sudo -u services -i`).
-
 ```bash
 # Start systemD service
 systemctl --user start stripe.service
@@ -83,5 +82,31 @@ systemctl --user disable --now stripe.service
 systemctl --user restart stripe.service
 ```
 
+## Extra
+Create a systemd.service there keeps git repoes up-to-date  
+
+Make sure you are the service/system user (`sudo -u services -i`)
+```
+# Create service file
+cat <<'zEOFz' | tee ~/.config/systemd/user/git_repo_updater.service
+[Unit]
+Description=Search and find git repoes to update/pull newest version
+
+[Service]
+#WorkingDirectory=%h/stripe
+Type=simple
+
+ExecStart=/usr/bin/find . -maxdepth 3 -type d -name .git -exec bash -c 'cd $(dirname "{}") && pwd && git pull --ff-only' \;
+
+Restart=always
+RestartSec=1h
+
+[Install]
+WantedBy=default.target
+zEOFz
+
+# Enable and start service
+systemctl --user enable --now git_repo_updater.service
+```
 
 
