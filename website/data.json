@@ -1,0 +1,62 @@
+[
+  {
+    "active": true,
+    "attributes": [],
+    "caption": null,
+    "description": "An easy way to pay for your membership! Though we have a preference for direct bank transfer because this costs us quite a bit of money. So if it is not too much hassle for you, use that. We still love you either way <3",
+    "id": "prod_HSrcBJ080mFkIQ",
+    "images": [
+      "https://files.stripe.com/links/fl_test_Nls7KptOiq6g1pa6wLOtWcsO"
+    ],
+    "name": "1 year BEST Alumni Network Membership",
+    "prices": [
+      {
+        "currency": "eur",
+        "id": "price_1GzSe4DDjeVyMH3rJmUphwJy",
+        "recurring": null,
+        "type": "one_time",
+        "unit_amount": 1300,
+        "unit_amount_decimal": "1300"
+      },
+      {
+        "currency": "eur",
+        "id": "price_1GtvsrDDjeVyMH3ri4sUf0TD",
+        "recurring": {
+          "aggregate_usage": null,
+          "interval": "year",
+          "interval_count": 1,
+          "trial_period_days": null,
+          "usage_type": "licensed"
+        },
+        "type": "recurring",
+        "unit_amount": 1000,
+        "unit_amount_decimal": "1000"
+      }
+    ],
+    "type": "service"
+  },
+  {
+    "active": true,
+    "attributes": [
+      "name"
+    ],
+    "caption": "1 year fee",
+    "description": "An easy way to pay for your membership! Though we have a preference for direct bank transfer because this costs us quite a bit of money. So if it is not too much hassle for you, use that.\n\nWe still love you either way <3",
+    "id": "prod_G4nVVoumJClbjX",
+    "images": [
+      "image/no_image_192x192.png"
+    ],
+    "name": "1 year BEST Alumni Network Membership",
+    "prices": [
+      {
+        "currency": "eur",
+        "id": "sku_G4nVmRdwQXkaHN",
+        "recurring": null,
+        "type": "one_time",
+        "unit_amount": 1200,
+        "unit_amount_decimal": "1200"
+      }
+    ],
+    "type": "good"
+  }
+]

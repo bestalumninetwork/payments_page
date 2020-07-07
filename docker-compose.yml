@@ -1,0 +1,29 @@
+---
+# ex: set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab:
+
+version: "2.1"
+
+services:
+  app:
+    image: dvaerum/nginx-with-certbot-in-docker:dev
+    #restart: always
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./sites-available:/etc/nginx/sites-available:ro
+      - ./website:/var/www/html:ro
+    ports:
+      - 80:80
+      - 443:443
+
+    env_file: .env
+
+    environment:
+      # Plugin
+      CONTENT-SECURITY-POLICY: "default-src 'self'; script-src 'strict-dynamic' https://*.stripe.com/*;"
+
+  import:
+    build: ./import_container
+    volumes:
+      - ./website:/website
+
+    env_file: .env
