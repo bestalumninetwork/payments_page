@@ -59,9 +59,9 @@ cp .env{.example,}
 
 ## Config
 Make sure you are the service/system user (`sudo -u services -i`).  
-Open the `~/stripe/.env` and set the `STRIPE_SECRET_KEY` variable. You can find it (here)[https://dashboard.stripe.com/apikeys]  
+Open the `~/stripe/.env` and set the `STRIPE_SECRET_KEY` variable. You can find it [here](https://dashboard.stripe.com/apikeys)  
 
-For how to configure the rest of Nginx and Let's Encrypt go (here)[https://github.com/dvaerum/nginx-with-certbot-in-docker] and continue reading.
+For how to configure the rest of Nginx and Let's Encrypt go [here](https://github.com/dvaerum/nginx-with-certbot-in-docker) and continue reading.
 
 ## Start/Restart/Stop
 Make sure you are the service/system user (`sudo -u services -i`).
