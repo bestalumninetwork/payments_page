@@ -8,7 +8,7 @@ import os
 import sys
 from time import sleep
 
-wait_sec       = os.environ.get('STRIPE_WAIT_SEC', 300)
+wait_sec       = int(os.environ.get('STRIPE_WAIT_SEC', 300))
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 if not stripe.api_key:
   sys.exit(1)
