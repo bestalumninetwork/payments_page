@@ -60,6 +60,7 @@ cp .env{.example,}
 ## Config
 Make sure you are the service/system user (`sudo -u services -i`).  
 Open the `~/stripe/.env` and set the `STRIPE_SECRET_KEY` variable. You can find it [here](https://dashboard.stripe.com/apikeys)  
+**Note:** You can also change the variable `STRIPE_WAIT_SEC` to change the interval/delay between Stripe import, default is `300` (5mins).  
 
 For how to configure the rest of Nginx and Let's Encrypt go [here](https://github.com/dvaerum/nginx-with-certbot-in-docker) and continue reading.
 
