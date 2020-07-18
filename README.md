@@ -22,6 +22,7 @@ sudo useradd \
   --home-dir "/home/${NEW_USER}" \
   --groups docker \
   --system \
+  --shell /bin/bash \
   --user-group \
   "${NEW_USER}"
 
