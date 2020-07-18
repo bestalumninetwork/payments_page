@@ -29,10 +29,10 @@ sudo useradd \
 sudo chmod 700 "/home/${NEW_USER}"
 
 # Make it so that the system this someone is load in to the user
-loginctl enable-linger "${NEW_USER}"
+sudo loginctl enable-linger "${NEW_USER}"
 
 # Set a magic variable that you need to use systemD, just don't think about it
-cat <<"zEOFz" | sudo -u "${NEW_USER}" tee -a ~/.bashrc
+cat <<"zEOFz" | sudo -u "${NEW_USER}" -i tee -a "/home/${NEW_USER}/.bashrc"
 
 ### Systemd variable
 export "XDG_RUNTIME_DIR=/run/user/`id -u`"
