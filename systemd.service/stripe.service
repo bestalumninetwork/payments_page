@@ -5,7 +5,7 @@ After=docker.service
 [Service]
 WorkingDirectory=%h/stripe
 Type=fork
-ExecStartPre=/usr/bin/bash bin/pull-all.sh
+ExecStartPre=/bin/bash bin/pull-all.sh
 ExecStart=/usr/bin/docker-compose up --build
 ExecStop=/usr/bin/docker-compose stop
 Restart=always
