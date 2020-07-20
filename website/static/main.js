@@ -1,5 +1,7 @@
+// ex: set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab:
+
 // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
-var PUBLISHABLE_KEY = "pk_test_nsRieRdLvnTKaD3htrdpv1Al00304sq5j5";
+var PUBLISHABLE_KEY = "pk_live_J8QXCZI8ZNI1SJiAi3uL87Qn00Je3GYNBD";
 // Replace with the domain you want your users to be redirected back to after payment
 var DOMAIN = window.location.origin;
 // Replace with a SKU for your own product (created either in the Stripe Dashboard or with the API)
@@ -14,7 +16,7 @@ var handleResult = function (result) {
   }
 };
 
-var redirectToCheckout = function (priceId) {
+var redirectToCheckout = function (priceId, priceMode) {
   // Make the call to Stripe.js to redirect to the checkout page
   // with the current quantity
   stripe.redirectToCheckout({
@@ -22,7 +24,7 @@ var redirectToCheckout = function (priceId) {
       successUrl:
         DOMAIN + "/success.html?session_id={CHECKOUT_SESSION_ID}",
       cancelUrl: DOMAIN + "/canceled.html",
-      mode: 'subscription',
+      mode: priceMode
     })
     .then(handleResult);
 }
@@ -65,24 +67,33 @@ fetch(new Request('data.json'))
       }
       content.appendChild(imagePlaceholder);
 
+      var descriptionText = document.createElement('div');
+      descriptionText.innerText = product.description;
+      content.appendChild(descriptionText);
+
       newProductSection.appendChild(content);
 
       for (price of product.prices) {
-        if (price.type == "recurring") {
-          var button = document.createElement('button');
-          var buttonText = price.unit_amount_decimal.slice(0, -2) + '.' + price.unit_amount_decimal.slice(-2) + ' ' + price.currency.toUpperCase();
-          if (price.recurring) {
-              buttonText += ' per ' + price.recurring.interval;
-          }
-          button.innerText = buttonText;
-          button.id = price.id;
-
-          button.addEventListener("click", function (evt) {
-              redirectToCheckout(evt.target.id);
-          })
-
-          newProductSection.appendChild(button);
+        var button = document.createElement('button');
+        var buttonText = price.unit_amount_decimal.slice(0, -2) + '.' + price.unit_amount_decimal.slice(-2) + ' ' + price.currency.toUpperCase();
+        if (price.recurring) {
+            buttonText += ' per ' + price.recurring.interval;
         }
+
+        button.innerText = buttonText;
+        button.id = price.id;
+        if (price.type == 'recurring') {
+          button.value = 'subscription'
+        }
+        if (price.type == 'one_time') {
+          button.value = 'payment'
+        }
+
+        button.addEventListener("click", function (evt) {
+          redirectToCheckout(evt.target.id, evt.target.value);
+        })
+
+        newProductSection.appendChild(button);
       }
 
       mainElement.appendChild(newProductSection);
