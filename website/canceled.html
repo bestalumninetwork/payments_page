@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Stripe Checkout Sample</title>
-    <meta name="description" content="A demo of Stripe Payment Intents" />
+    <title>Stripe Checkout</title>
+    <meta name="description" content="BAN Payment - Canceled" />
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/normalize.css" />
@@ -18,11 +18,11 @@
           <div class="sr-header__logo"></div>
         </header>
         <div class="sr-payment-summary completed-view">
-          <h1>Your test payment was canceled</h1>
+          <h1>Your payment was canceled</h1>
           <h4>Checkout Session ID: <span id="session"></span></h4>
         </div>
       <div class="sr-content">
-        <div class="pasha-image-stack">
+<!--        <div class="pasha-image-stack">
           <img
             src="https://picsum.photos/280/320?random=1"
             width="140"
@@ -42,13 +42,13 @@
             src="https://picsum.photos/280/320?random=4"
             width="140"
             height="160"
-          />
+	    /> -->
         </div>
       </div>
     </div>
     <script>
       // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
-      var PUBLISHABLE_KEY = "pk_1234";
+      var PUBLISHABLE_KEY = "pk_live_J8QXCZI8ZNI1SJiAi3uL87Qn00Je3GYNBD";
       
       if (PUBLISHABLE_KEY === "pk_1234") {
         console.log(
