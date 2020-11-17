@@ -88,14 +88,13 @@ systemctl --user restart stripe.service
 Create a systemd.service there keeps git repoes up-to-date  
 
 Make sure you are the service/system user (`sudo -u services -i`)
-```
+```ini
 # Create service file
 cat <<'zEOFz' | tee ~/.config/systemd/user/git_repo_updater.service
 [Unit]
 Description=Search and find git repoes to update/pull the newest version
 
 [Service]
-#WorkingDirectory=%h/stripe
 Type=simple
 
 ExecStart=/usr/bin/find . -maxdepth 3 -type d -name .git -exec bash -c 'cd $(dirname "{}") && pwd && git pull --ff-only' \;
